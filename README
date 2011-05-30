@@ -1,0 +1,12 @@
+== TCG - Your Friendly TCG Collection Manager
+
+TCG is a rails web application used to manage collections of trading cards
+of several users. In TCG, people can add/remove cards that they own and
+lookup other person's sets, looking for trades and negotiations of cards.
+
+== Getting Started
+
+
+== Contact 
+
+- Volmer Soares - @volmer
