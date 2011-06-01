@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  expansion_order: MyString
+  name: MyString
+  rarity: MyString
+  card_type: MyString
+  expansion: 
+
+two:
+  expansion_order: MyString
+  name: MyString
+  rarity: MyString
+  card_type: MyString
+  expansion: 

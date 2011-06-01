@@ -1,0 +1,33 @@
+<%= form_for(@card) do |f| %>
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+      <% @card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :expansion_order %><br />
+    <%= f.text_field :expansion_order %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :rarity %><br />
+    <%= f.select :rarity, [:common,:uncommon,:rare,:rare_holo,:rare_holo_lv_x] %>
+  </div>
+  <div class="field">
+    <%= f.label :card_type %><br />
+    <%= f.select :card_type, [:trainer,:water,:grass,:psychic,:lightning,:darkness,:metal,:fire,:fighting,:colorless,:supporter,:stadium,:energy,:special_energy] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

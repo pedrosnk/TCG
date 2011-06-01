@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tcg</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <h1><%= link_to 'TCG', root_path %></h1>
+  <% if user_signed_in? %>
+    <b>Ol&aacute;, <%= current_user.login %>! :: <%= link_to('sair', destroy_user_session_path) %></b>
+  <% end %>
+  <p id="notice" class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</body>
+</html>

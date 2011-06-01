@@ -1,0 +1,47 @@
+<div align="center">
+  <h1 align="center"><%= @expansion.name %> de <%= @user.login %></h1>
+  <br/>
+  <div align="center" style="margin:0px;padding:0px;width:800px;padding-bottom:40px">
+    <div style="width:500px;float:left;margin-right:20px">
+      <table class="expansion_table">
+        <% @expansion.cards.each_with_index do |card,i| %>
+          <tr class="<%= card_row_class(card,@user)%>">
+            <td><b><%= (@user.id == current_user.id) ? add_remove_card(card) : card.expansion_order %></b></td>
+            <td><%= type_symbol card.card_type %></td>
+            <td><%= pop_up_card card %></td>
+            <td><%= rarity_image card.rarity %></td>
+            <%if current_user.is_admin? %>
+              <td><%= link_to 'Edit', edit_card_path(card) %></td>
+              <td><%= link_to 'Destroy', card, confirm: 'Are you sure?', method: :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div style="width:250px;float:left;text-align:left">
+      <div class="content">
+		<% [:common,:uncommon,:rare,:rare_holo,:rare_holo_lv_x].each do |rarity| %>
+          <%= rarity_image rarity %> <b><%= @user.cards_of_expansion_and_rarity(@expansion, rarity).length %>/<%= @expansion.cards_by_rarity(rarity).length %></b>
+          <br/>
+        <% end %>
+        Total: <b><%= @user.cards_of_expansion(@expansion).length %>/<%= @expansion.cards.length %></b>
+      </div>
+      <br/>
+      <div class="content">
+        <h3>Outros jogadores</h3>
+        <ul>
+        <% @others.each do |other| %>
+          <li><%= link_to other.login, {:controller => 'expansions',:action => 'show', :id=> @expansion.id, :login => other.login} %></li>
+        <% end %>
+        </ul>
+      </div>
+      <% if current_user.is_admin? %>
+        <br/>
+        <div class="content">
+		  <h3>Novo Card</h3>
+          <%= render 'cards/form' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

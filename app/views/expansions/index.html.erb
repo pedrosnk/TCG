@@ -1,0 +1,20 @@
+<center><div style="width:300px;">
+	<h1>Minhas Cole&ccedil;&otilde;es</h1>
+
+	<table class="expansion_list">
+	<% @expansions.each do |expansion| %>
+	  <tr>
+		<td><%= link_to expansion.name, expansion, :login => current_user.login %></td>
+		<td><%= expansion.cards.length %></td>
+		<% if current_user.is_admin? %>
+		  <td><%= link_to 'Edit', edit_expansion_path(expansion) %></td>
+		  <td><%= link_to 'Destroy', expansion, confirm: 'Are you sure?', method: :delete %></td>
+		<% end %>
+	  </tr>
+	<% end %>
+	</table>
+    <% if current_user.is_admin? %>
+	  <br />
+	  <%= link_to 'New Expansion', new_expansion_path %>
+	<% end %>
+</div></center>
