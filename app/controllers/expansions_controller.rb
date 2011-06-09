@@ -22,8 +22,8 @@ class ExpansionsController < ApplicationController
       @user = User.find_by_login(params[:login])
     end
     
-    @card = Card.new
-    @card.expansion = @expansion
+    @new_card = Card.new
+    @new_card.expansion = @expansion
     
     @others = []
     User.all.each{|usr| @others << usr unless usr.id == @user.id }

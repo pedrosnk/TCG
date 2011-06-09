@@ -39,7 +39,7 @@
         <br/>
         <div class="content">
 		  <h3>Novo Card</h3>
-          <%= render 'cards/form' %>
+          <%= render :partial => 'cards/form', :locals => {:card => @new_card} %>
         </div>
       <% end %>
     </div>

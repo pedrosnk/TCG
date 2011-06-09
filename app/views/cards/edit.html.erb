@@ -1,5 +1,7 @@
 <h1>Editing card</h1>
 
-<%= render 'form' %>
+<%= render :partial => 'form', :locals => {:card => @card} %>
+
+
 
 <%= link_to 'Back', @card.expansion %>

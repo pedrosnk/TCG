@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
   has_and_belongs_to_many :users
   
   validates_presence_of :expansion_order, :name, :rarity, :card_type
-  validates_uniqueness_of :expansion_order, :scope => :expansion
+  validates_uniqueness_of :expansion_order, :scope => :expansion_id
   
   validates_inclusion_of :rarity, :in => [:common,:uncommon,:rare,:rare_holo,:rare_holo_lv_x]
   validates_inclusion_of :card_type, :in => [:trainer,:water,:grass,:psychic,:lightning,:darkness,:metal,:fire,:fighting,:colorless,:supporter,:stadium,:energy,:special_energy]
